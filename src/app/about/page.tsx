@@ -39,15 +39,6 @@ export default function About() {
                 </div>
               </div>
             </div>
-            
-            <div className="mt-8 pt-8 border-t border-gray-800">
-              <Link 
-                href="/"
-                className="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 rounded-md transition-colors"
-              >
-                ← Back to Home
-              </Link>
-            </div>
           </div>
         </div>
       </div>
