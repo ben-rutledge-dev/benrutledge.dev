@@ -8,7 +8,7 @@ export default function Home() {
             Ben Rutledge
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8">
-            Front-End Developer | Interactive Experiences | Creative Coder
+            Front-End Developer
           </p>
         </div>
       </div>
