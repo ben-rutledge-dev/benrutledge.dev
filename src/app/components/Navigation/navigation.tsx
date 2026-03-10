@@ -4,11 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './navigation.module.css';
 
-const NAV_BTN_WIDTH = 128;
-const NAV_BTN_HEIGHT = 48;
-const SCALE_BOOST = 1.6; // multiplier on top of computed displacement
-
-
+const navLinks = [
+  { label: 'Home', href: '/', external: false },
+  { label: 'Projects', href: '/projects', external: false },
+  { label: 'About', href: '/about', external: false },
+  { label: 'CV', href: '/cv.pdf', external: true },
+];
 
 export const Navigation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,30 +17,31 @@ export const Navigation: React.FC = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  const filterId = 'nav-liquid-glass';
-
   return (
     <>
       {/* Desktop Navigation - Top Right */}
       <nav className="hidden md:flex fixed top-6 right-6 z-50 gap-2">
-        <Link
-          href="/"
-          className={styles.desktopLink}
-        >
-          Home
-        </Link>
-        <Link
-          href="/projects"
-          className={styles.desktopLink}
-        >
-          Projects
-        </Link>
-        <Link
-          href="/about"
-          className={styles.desktopLink}
-        >
-          About
-        </Link>
+        {navLinks.map((link) => (
+          link.external ? (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.desktopLink}
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={styles.desktopLink}
+            >
+              {link.label}
+            </Link>
+          )
+        ))}
       </nav>
 
       {/* Mobile Hamburger Button */}
@@ -86,27 +88,29 @@ export const Navigation: React.FC = () => {
         }`}
       >
         <div className="flex flex-col pt-24 px-8 space-y-6">
-          <Link
-            href="/"
-            onClick={closeMenu}
-            className="text-white text-xl hover:text-gray-300 transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/projects"
-            onClick={closeMenu}
-            className="text-white text-xl hover:text-gray-300 transition-colors"
-          >
-            Projects
-          </Link>
-          <Link
-            href="/about"
-            onClick={closeMenu}
-            className="text-white text-xl hover:text-gray-300 transition-colors"
-          >
-            About
-          </Link>
+          {navLinks.map((link) => (
+            link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMenu}
+                className="text-white text-xl hover:text-gray-300 transition-colors"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                onClick={closeMenu}
+                className="text-white text-xl hover:text-gray-300 transition-colors"
+              >
+                {link.label}
+              </Link>
+            )
+          ))}
         </div>
       </nav>
     </>
