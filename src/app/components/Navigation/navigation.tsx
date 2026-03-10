@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'Projects', href: '/projects', external: false },
   { label: 'About', href: '/about', external: false },
   { label: 'CV', href: '/cv.pdf', external: true },
+  { label: 'Contact', href: '/contact', external: false },
 ];
 
 export const Navigation: React.FC = () => {
