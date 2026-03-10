@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import styles from '@/app/projects/projects.module.css';
+import { Button } from '@/app/components/Button';
+import { TechBadge } from '@/app/components/TechBadge';
 import CtrlLoopPlayer from './CtrlLoopPlayer';
 
 export default function CtrlLoopPage() {
@@ -41,10 +41,10 @@ export default function CtrlLoopPage() {
             <section>
               <h2 className="text-2xl font-semibold text-white mb-3">Technologies</h2>
               <div className="flex flex-wrap gap-2">
-                <span className="px-4 py-2 bg-white/10 rounded-md">Web Audio API</span>
-                <span className="px-4 py-2 bg-white/10 rounded-md">JavaScript</span>
-                <span className="px-4 py-2 bg-white/10 rounded-md">React</span>
-                <span className="px-4 py-2 bg-white/10 rounded-md">Next.js</span>
+                <TechBadge>Web Audio API</TechBadge>
+                <TechBadge>JavaScript</TechBadge>
+                <TechBadge>React</TechBadge>
+                <TechBadge>Next.js</TechBadge>
               </div>
             </section>
 
@@ -61,12 +61,9 @@ export default function CtrlLoopPage() {
 
             {/* Navigation */}
             <div className="mt-12 pt-8 border-t border-gray-800 flex gap-4">
-              <Link
-                href="/projects"
-                className="inline-block px-6 py-3 bg-white/10 hover:bg-white/20 rounded-md transition-colors"
-              >
+              <Button href="/projects">
                 ← Back to Projects
-              </Link>
+              </Button>
             </div>
           </div>
         </div>
