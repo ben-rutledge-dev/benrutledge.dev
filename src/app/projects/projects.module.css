@@ -15,18 +15,3 @@
 .projectCard:hover .squircleThumbnail {
   transform: scale(1.02);
 }
-
-.squircleHero {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-bottom: 3rem;
-  border-radius: 20%;
-  
-  /* Modern squircle using border-shape */
-  border-shape: squircle;
-  
-  /* Fallback for browsers without border-shape support */
-  @supports not (border-shape: squircle) {
-    border-radius: 20%;
-  }
-}

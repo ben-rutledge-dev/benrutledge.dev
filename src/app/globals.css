@@ -23,7 +23,6 @@ html, body {
   margin: 0;
   padding: 0;
   background: #000;
-  overflow: hidden;
 }
 
 @keyframes slide-in-up {
