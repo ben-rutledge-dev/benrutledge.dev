@@ -1,1 +1,1 @@
-export * from './WorkflowCard';
+export * from './workflowCard';

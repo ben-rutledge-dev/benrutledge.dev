@@ -1,4 +1,5 @@
 'use client';
+import styles from './ctrlLoopPlayer.module.css';
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 
@@ -202,7 +203,7 @@ export default function CtrlLoopPlayer() {
     return (
       <div className="flex flex-col items-center gap-10 py-16">
         <img
-          src="/ctrl-loop/img/ctrl_loop.png"
+          src="/ctrl-loop/img/ctrl-loop.png"
           alt="ctrl_loop"
           className="w-64"
         />
@@ -221,7 +222,7 @@ export default function CtrlLoopPlayer() {
     <div>
       {/* Logo */}
       <img
-        src="/ctrl-loop/img/ctrl_loop.png"
+        src="/ctrl-loop/img/ctrl-loop.png"
         alt="ctrl_loop"
         className="w-64 mb-8"
       />
@@ -240,23 +241,16 @@ export default function CtrlLoopPlayer() {
         </button>
 
         <span className="text-sm tracking-widest">FILTER:</span>
-        <label className="relative inline-block w-[50px] h-[27px] cursor-pointer">
+        <label className={styles.toggleTrack}>
           <input
             type="checkbox"
             checked={filterEnabled}
             onChange={handleFilterToggle}
             className="opacity-0 absolute w-0 h-0"
           />
-          <span className="absolute inset-0 rounded-full bg-white hover:bg-gray-300 transition-colors cursor-pointer">
-            <span
-              className={`absolute top-[3.5px] left-[4px] w-5 h-5 bg-black rounded-full transition-transform ${
-                filterEnabled ? 'translate-x-[21px]' : 'translate-x-0'
-              }`}
-            />
-          </span>
+          <span className={`${styles.toggleThumb} ${filterEnabled ? styles.enabled : ''}`} />
         </label>
 
-        <span className="text-sm tracking-widest">FREQ:</span>
         <input
           type="range"
           min="0"
@@ -264,8 +258,7 @@ export default function CtrlLoopPlayer() {
           step="0.01"
           value={frequency}
           onChange={e => handleFrequencyChange(Number(e.target.value))}
-          className="w-36 h-[27px] rounded-full bg-white outline-none cursor-pointer accent-black"
-          style={{ WebkitAppearance: 'none' }}
+          className={styles.freqSlider}
         />
       </div>
 

@@ -1,4 +1,20 @@
+.toggleTrack {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 28px;
+  border-radius: 14px;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 150ms;
+}
+
+.toggleTrack:hover {
+  background-color: #d1d5db;
+}
+
 .toggleThumb {
+  display: block;
   position: absolute;
   top: 3.5px;
   left: 4px;
@@ -10,5 +26,34 @@
 }
 
 .toggleThumb.enabled {
-  transform: translateX(21px);
+  transform: translateX(22px);
+}
+
+.freqSlider {
+  height: 28px;
+  width: 9rem;
+  cursor: pointer;
+  accent-color: black;
+  appearance: none;
+  -webkit-appearance: none;
+  background: white;
+  border-radius: 14px;
+}
+
+.freqSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+  cursor: pointer;
+}
+
+.freqSlider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: black;
+  border: none;
+  cursor: pointer;
 }
