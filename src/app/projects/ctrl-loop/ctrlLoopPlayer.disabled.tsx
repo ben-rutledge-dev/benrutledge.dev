@@ -204,7 +204,7 @@ export default function CtrlLoopPlayer() {
         <img
           src="/ctrl-loop/img/ctrl_loop.png"
           alt="ctrl_loop"
-          className="w-64 invert"
+          className="w-64"
         />
         <button
           onClick={handleStart}
@@ -223,7 +223,7 @@ export default function CtrlLoopPlayer() {
       <img
         src="/ctrl-loop/img/ctrl_loop.png"
         alt="ctrl_loop"
-        className="w-64 invert mb-8"
+        className="w-64 mb-8"
       />
 
       {/* Controls row */}
