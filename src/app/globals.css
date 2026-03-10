@@ -39,3 +39,8 @@ html, body {
 .animate-slide-in-up {
   animation: slide-in-up 0.8s ease-out forwards;
 }
+
+.squircle {
+  border-radius: 20px;
+  corner-shape: squircle;
+}
