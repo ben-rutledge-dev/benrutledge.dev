@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from '../projects.module.css';
+import styles from '@/app/projects/projects.module.css';
 import CtrlLoopPlayer from './CtrlLoopPlayer';
 
 export default function CtrlLoopPage() {
@@ -21,8 +21,7 @@ export default function CtrlLoopPage() {
 
           {/* Player */}
           <div
-            className={`${styles.squircleHero} flex items-center justify-center overflow-hidden`}
-            style={{ backgroundColor: '#111' }}
+            className="flex items-center justify-center overflow-hidden"
           >
             <CtrlLoopPlayer />
           </div>
