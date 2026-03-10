@@ -1,6 +1,6 @@
 import { Button } from '@/app/components/Button';
 import { TechBadge } from '@/app/components/TechBadge';
-import CtrlLoopPlayer from './CtrlLoopPlayer';
+import CtrlLoopPlayer from './ctrlLoopPlayer';
 
 export default function CtrlLoopPage() {
   return (

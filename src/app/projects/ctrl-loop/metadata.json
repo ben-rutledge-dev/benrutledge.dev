@@ -3,5 +3,5 @@
   "title": "ctrl_loop",
   "description": "An interactive browser-based loop player built with the Web Audio API.",
   "thumbnail": "#111111",
-  "image": "/ctrl-loop/img/ctrl_loop.png"
+  "image": "/ctrl-loop/img/ctrl-loop.png"
 }

@@ -76,9 +76,9 @@ export default async function Projects() {
                       backgroundColor: project.thumbnail
                     }}
                   >
-                    <div className="w-full h-full flex items-center justify-center text-white/30 text-6xl font-bold">
+                    <div className="w-full h-full flex items-center justify-center text-white text-6xl font-bold">
                       {project.image ? (
-                        <Image src={project.image} alt={project.title} width={200} height={200} className="w-1/2 invert opacity-30" />
+                        <Image src={project.image} alt={project.title} width={200} height={200} className="w-1/2" />
                       ) : (
                         project.title.charAt(0)
                       )}

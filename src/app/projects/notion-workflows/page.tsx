@@ -3,6 +3,7 @@ import { TechBadge } from '@/app/components/TechBadge';
 import { CodeBlock } from '@/app/components/CodeBlock';
 import { Gallery, GalleryImage } from '@/app/components/Gallery';
 import { WorkflowCard } from './components/WorkflowCard';
+import Image from 'next/image';
 
 const images: GalleryImage[] = [
   {
@@ -176,6 +177,7 @@ workflows/
                 ← Back to Projects
               </Button>
               <Button href="https://github.com/ben-rutledge-dev/notion-workflows" external>
+                <Image src="/icons/github-logo.svg" alt="GitHub" width={20} height={20} className="inline-block mr-2" />
                 View on GitHub →
               </Button>
             </div>
