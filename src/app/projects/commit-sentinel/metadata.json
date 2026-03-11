@@ -1,0 +1,8 @@
+{
+  "id": "commit-sentinel",
+  "title": "Commit Sentinel",
+  "description": "Git hook that enforces commit message and branch naming conventions with intelligent suggestions.",
+  "thumbnail": "#111111",
+  "image": "/icons/github-logo.svg",
+  "order": 2
+}
