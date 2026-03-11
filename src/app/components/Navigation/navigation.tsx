@@ -48,20 +48,20 @@ export const Navigation: React.FC = () => {
       {/* Mobile Hamburger Button */}
       <button
         onClick={toggleMenu}
-        className="md:hidden fixed top-6 right-6 z-50 p-2 rounded-md bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm"
+        className="md:hidden fixed top-6 right-6 z-50 p-2 rounded-md hover:bg-white/20 transition-colors backdrop-blur-sm"
         aria-label="Toggle menu"
       >
-        <div className="w-6 h-5 flex flex-col justify-between">
+        <div className="relative w-6 h-5" style={{ minHeight: '20px' }}>
           <span
-            className={`block h-0.5 w-full bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''
+            className={`absolute left-0 block h-0.5 w-full bg-white transition-all duration-300 origin-center ${isOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'
               }`}
           />
           <span
-            className={`block h-0.5 w-full bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''
+            className={`absolute left-0 block h-0.5 w-full bg-white transition-all duration-300 origin-center ${isOpen ? 'opacity-0 scale-x-0' : 'top-1/2 -translate-y-1/2'
               }`}
           />
           <span
-            className={`block h-0.5 w-full bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''
+            className={`absolute left-0 block h-0.5 w-full bg-white transition-all duration-300 origin-center ${isOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'
               }`}
           />
         </div>
