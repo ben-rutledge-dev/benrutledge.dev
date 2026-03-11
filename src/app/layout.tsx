@@ -34,7 +34,6 @@ export default function RootLayout({
         {/* <div className="fixed inset-0 z-0"> */}
         <div
           style={{
-            // marginTop: 'var(--header-height)',
             top: 'var(--header-height)',
             height: 'calc(100vh - var(--header-height))'
           }}
