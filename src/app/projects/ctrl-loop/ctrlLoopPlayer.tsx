@@ -1,25 +1,26 @@
 'use client';
 import styles from './ctrlLoopPlayer.module.css';
+import Image from 'next/image';
 
 import { useRef, useState, useEffect, useCallback } from 'react';
 
 const TRACKS = [
-  { name: 'kick',    key: '1', initialMuted: false },
-  { name: 'snare',   key: '2', initialMuted: false },
-  { name: 'clap',    key: '3', initialMuted: false },
-  { name: 'ohh',     key: '4', initialMuted: false },
-  { name: 'chh',     key: 'q', initialMuted: false },
-  { name: 'piano',   key: 'w', initialMuted: true  },
-  { name: 'rhodes',  key: 'e', initialMuted: true  },
-  { name: 'rhodes2', key: 'r', initialMuted: true  },
-  { name: 'conga',   key: 'a', initialMuted: true  },
-  { name: 'bass1',   key: 's', initialMuted: true  },
-  { name: 'bass2',   key: 'd', initialMuted: true  },
-  { name: 'vox1',    key: 'f', initialMuted: true  },
-  { name: 'vox2',    key: 'z', initialMuted: true  },
-  { name: 'vox3',    key: 'x', initialMuted: true  },
-  { name: 'vox4',    key: 'c', initialMuted: true  },
-  { name: 'vox5',    key: 'v', initialMuted: true  },
+  { name: 'kick', key: '1', initialMuted: false },
+  { name: 'snare', key: '2', initialMuted: false },
+  { name: 'clap', key: '3', initialMuted: false },
+  { name: 'ohh', key: '4', initialMuted: false },
+  { name: 'chh', key: 'q', initialMuted: false },
+  { name: 'piano', key: 'w', initialMuted: true },
+  { name: 'rhodes', key: 'e', initialMuted: true },
+  { name: 'rhodes2', key: 'r', initialMuted: true },
+  { name: 'conga', key: 'a', initialMuted: true },
+  { name: 'bass1', key: 's', initialMuted: true },
+  { name: 'bass2', key: 'd', initialMuted: true },
+  { name: 'vox1', key: 'f', initialMuted: true },
+  { name: 'vox2', key: 'z', initialMuted: true },
+  { name: 'vox3', key: 'x', initialMuted: true },
+  { name: 'vox4', key: 'c', initialMuted: true },
+  { name: 'vox5', key: 'v', initialMuted: true },
 ];
 
 const LOOP_END = 7.577;
@@ -55,7 +56,7 @@ export default function CtrlLoopPlayer() {
     const AudioContextCtor =
       window.AudioContext ||
       (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-    if (!AudioContextCtor) {
+    if(!AudioContextCtor) {
       alert('Web Audio API not supported in this browser');
       setLoading(false);
       return;
@@ -76,7 +77,7 @@ export default function CtrlLoopPlayer() {
   }, []);
 
   const stopPlayback = useCallback(() => {
-    for (const { name } of TRACKS) {
+    for(const { name } of TRACKS) {
       try { sourcesRef.current[name]?.source.stop(0); } catch { /* already stopped */ }
     }
     sourcesRef.current = {};
@@ -94,7 +95,7 @@ export default function CtrlLoopPlayer() {
 
     // Create sources and gain nodes
     const newSources: Record<string, TrackData> = {};
-    for (const { name } of TRACKS) {
+    for(const { name } of TRACKS) {
       const source = ctx.createBufferSource();
       const gainNode = ctx.createGain();
       source.buffer = buffersRef.current[name];
@@ -107,7 +108,7 @@ export default function CtrlLoopPlayer() {
     sourcesRef.current = newSources;
 
     // Apply mute states
-    for (const { name } of TRACKS) {
+    for(const { name } of TRACKS) {
       newSources[name].gainNode.gain.setValueAtTime(
         mutedRef.current[name] ? 0 : 1,
         ctx.currentTime
@@ -115,22 +116,22 @@ export default function CtrlLoopPlayer() {
     }
 
     // Apply filter if enabled
-    if (filterEnabledRef.current) {
-      for (const { name } of TRACKS) {
+    if(filterEnabledRef.current) {
+      for(const { name } of TRACKS) {
         newSources[name].gainNode.disconnect();
         newSources[name].gainNode.connect(filter);
       }
       filter.connect(ctx.destination);
     }
 
-    for (const { name } of TRACKS) {
+    for(const { name } of TRACKS) {
       newSources[name].source.start(0);
     }
     setPlaying(true);
   }, [frequency]);
 
   const handlePlayStop = useCallback(() => {
-    if (playing) stopPlayback();
+    if(playing) stopPlayback();
     else startPlayback();
   }, [playing, stopPlayback, startPlayback]);
 
@@ -138,7 +139,7 @@ export default function CtrlLoopPlayer() {
     const ctx = ctxRef.current;
     setMuted(prev => {
       const newMuted = !prev[trackName];
-      if (ctx && sourcesRef.current[trackName]) {
+      if(ctx && sourcesRef.current[trackName]) {
         sourcesRef.current[trackName].gainNode.gain.setValueAtTime(
           newMuted ? 0 : 1,
           ctx.currentTime
@@ -152,19 +153,19 @@ export default function CtrlLoopPlayer() {
     const ctx = ctxRef.current;
     setFilterEnabled(prev => {
       const newEnabled = !prev;
-      if (ctx && Object.keys(sourcesRef.current).length > 0 && filterRef.current) {
+      if(ctx && Object.keys(sourcesRef.current).length > 0 && filterRef.current) {
         const filter = filterRef.current;
-        for (const { name } of TRACKS) {
+        for(const { name } of TRACKS) {
           sourcesRef.current[name].gainNode.disconnect();
         }
         try { filter.disconnect(); } catch { /* not connected */ }
-        if (newEnabled) {
-          for (const { name } of TRACKS) {
+        if(newEnabled) {
+          for(const { name } of TRACKS) {
             sourcesRef.current[name].gainNode.connect(filter);
           }
           filter.connect(ctx.destination);
         } else {
-          for (const { name } of TRACKS) {
+          for(const { name } of TRACKS) {
             sourcesRef.current[name].gainNode.connect(ctx.destination);
           }
         }
@@ -175,7 +176,7 @@ export default function CtrlLoopPlayer() {
 
   const handleFrequencyChange = useCallback((value: number) => {
     setFrequency(value);
-    if (filterRef.current) {
+    if(filterRef.current) {
       filterRef.current.frequency.value = value;
     }
   }, []);
@@ -185,7 +186,7 @@ export default function CtrlLoopPlayer() {
     const keyMap = Object.fromEntries(TRACKS.map(t => [t.key, t.name]));
     const handleKeyDown = (e: KeyboardEvent) => {
       const trackName = keyMap[e.key];
-      if (trackName) handleMuteToggle(trackName);
+      if(trackName) handleMuteToggle(trackName);
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -199,18 +200,20 @@ export default function CtrlLoopPlayer() {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!loaded) {
+  if(!loaded) {
     return (
       <div className="flex flex-col items-center gap-10 py-16">
-        <img
+        <Image
           src="/ctrl-loop/img/ctrl-loop.png"
           alt="ctrl_loop"
+          width={256}
+          height={256}
           className="w-64"
         />
         <button
           onClick={handleStart}
           disabled={loading}
-          className="px-8 py-4 text-xl border-4 border-white rounded-full text-white bg-transparent hover:text-gray-300 hover:border-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-8 py-4 text-xl border-4 border-white rounded-full text-white bg-transparent hover:text-gray-300 hover:border-gray-300 transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
         >
           {loading ? 'Loading…' : 'Start'}
         </button>
@@ -221,9 +224,11 @@ export default function CtrlLoopPlayer() {
   return (
     <div>
       {/* Logo */}
-      <img
+      <Image
         src="/ctrl-loop/img/ctrl-loop.png"
         alt="ctrl_loop"
+        width={256}
+        height={256}
         className="w-64 mb-8"
       />
 
@@ -269,9 +274,8 @@ export default function CtrlLoopPlayer() {
             key={name}
             onClick={() => handleMuteToggle(name)}
             title={`${name} [${key}]`}
-            className={`w-[60px] h-[60px] border-4 border-white transition-colors hover:opacity-80 ${
-              muted[name] ? 'bg-black' : 'bg-white'
-            }`}
+            className={`w-[60px] h-[60px] border-4 border-white transition-colors hover:opacity-80 ${muted[name] ? 'bg-black' : 'bg-white'
+              }`}
           />
         ))}
       </div>
