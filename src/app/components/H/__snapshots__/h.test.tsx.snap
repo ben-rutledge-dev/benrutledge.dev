@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`H renders a h2 1`] = `
+<div>
+  <h2
+    class="text-lg text-primary-600 font-semibold tracking-wide "
+  >
+    I'm a H2
+  </h2>
+</div>
+`;
+
+exports[`H renders a h3 1`] = `
+<div>
+  <h3
+    class="text-base text-primary-500 font-semibold tracking-wide "
+  >
+    I'm a H3
+  </h3>
+</div>
+`;
+
+exports[`H renders a h4 1`] = `
+<div>
+  <h4
+    class="text-sm text-secondary-500 font-semibold uppercase "
+  >
+    I'm a H4
+  </h4>
+</div>
+`;
+
+exports[`H renders a h5 1`] = `
+<div>
+  <h5
+    class="text-sm font-semibold "
+  >
+    I'm a H5
+  </h5>
+</div>
+`;
+
+exports[`H renders a h6 1`] = `
+<div>
+  <h6
+    class="text-sm text-grey-600 font-semibold "
+  >
+    I'm a H6
+  </h6>
+</div>
+`;
+
+exports[`H renders a h6 2`] = `
+<div>
+  <h6
+    class="text-sm text-grey-600 font-semibold "
+  >
+    I'm a H6
+  </h6>
+</div>
+`;
+
+exports[`H still renders a h6 when 7 levels deep 1`] = `
+<div>
+  <h6
+    class="text-sm text-grey-600 font-semibold "
+  >
+    I'm still a H6
+  </h6>
+</div>
+`;

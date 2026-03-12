@@ -2,95 +2,95 @@ import Image from 'next/image';
 // Components
 import { Button } from '@/app/components/Button';
 import { CodeBlock } from '@/app/components/CodeBlock';
+import { H } from '@/app/components/H';
 import { PageWrapper } from '@/app/components/PageWrapper';
+import { Section } from '@/app/components/Section';
 import { TechBadge } from '@/app/components/TechBadge';
 
 export default function CommitSentinelPage() {
   return (
-    <PageWrapper>
+    <PageWrapper title="Commit Sentinel">
       {/* Header */}
-      <h1 className="text-4xl font-bold mb-4">Commit Sentinel</h1>
-      <p className="text-xl text-gray-300">
+      <p className="text-xl text-gray-300 mb-4">
         Git hook that enforces commit message and branch naming conventions with intelligent suggestions.
       </p>
       {/* Project Details */}
-      <div className="px-8 pb-8">
-        <div className="space-y-6 text-gray-300 leading-relaxed">
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Overview</h2>
-            <p>
-              Commit Sentinel is a configurable git commit-msg hook that validates commit messages,
-              branch names, and file scopes before allowing commits to proceed. When validation fails,
-              it provides clear feedback and intelligent suggestions for fixes. The tool helps teams
-              maintain consistent git conventions and catch common mistakes early — from verb tense
-              and casing to conventional commit types and branch naming patterns.
-            </p>
-          </section>
+      <div className="space-y-6 text-gray-300 leading-relaxed">
+        <Section>
+          <H>Overview</H>
+          <p>
+            Commit Sentinel is a configurable git commit-msg hook that validates commit messages,
+            branch names, and file scopes before allowing commits to proceed. When validation fails,
+            it provides clear feedback and intelligent suggestions for fixes. The tool helps teams
+            maintain consistent git conventions and catch common mistakes early — from verb tense
+            and casing to conventional commit types and branch naming patterns.
+          </p>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Key Features</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">Commit Message Validation</h3>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Enforce verb tense (imperative, past, or present)</li>
-                  <li>Validate casing (sentence, lower, upper, title, camel)</li>
-                  <li>Check length constraints with customizable min/max</li>
-                  <li>Support for Conventional Commits (feat:, fix:, docs:, etc.)</li>
-                  <li>Block forbidden words and generic single-word messages</li>
-                  <li>Custom regex patterns for specialized requirements</li>
-                </ul>
-              </div>
+        <Section>
+          <H>Key Features</H>
+          <div className="space-y-4">
+            <Section>
+              <H>Commit Message Validation</H>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Enforce verb tense (imperative, past, or present)</li>
+                <li>Validate casing (sentence, lower, upper, title, camel)</li>
+                <li>Check length constraints with customizable min/max</li>
+                <li>Support for Conventional Commits (feat:, fix:, docs:, etc.)</li>
+                <li>Block forbidden words and generic single-word messages</li>
+                <li>Custom regex patterns for specialized requirements</li>
+              </ul>
+            </Section>
 
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">Branch Name Validation</h3>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Enforce allowed prefixes (feature, bugfix, hotfix, etc.)</li>
-                  <li>Require ticket numbers with customizable patterns</li>
-                  <li>Validate naming conventions (kebab-case, snake_case)</li>
-                  <li>Check verb tense in branch descriptions</li>
-                  <li>Support exempt branches with glob patterns</li>
-                </ul>
-              </div>
+            <Section>
+              <H>Branch Name Validation</H>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Enforce allowed prefixes (feature, bugfix, hotfix, etc.)</li>
+                <li>Require ticket numbers with customizable patterns</li>
+                <li>Validate naming conventions (kebab-case, snake_case)</li>
+                <li>Check verb tense in branch descriptions</li>
+                <li>Support exempt branches with glob patterns</li>
+              </ul>
+            </Section>
 
-              <div>
-                <h3 className="text-lg font-medium text-white mb-2">Scope Isolation</h3>
-                <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Prevent mixing changes from different scoped paths</li>
-                  <li>Ensure shared code or migrations are committed separately</li>
-                  <li>Configurable glob patterns with custom error messages</li>
-                </ul>
-              </div>
-            </div>
-          </section>
+            <Section>
+              <H>Scope Isolation</H>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li>Prevent mixing changes from different scoped paths</li>
+                <li>Ensure shared code or migrations are committed separately</li>
+                <li>Configurable glob patterns with custom error messages</li>
+              </ul>
+            </Section>
+          </div>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Technologies</h2>
-            <div className="flex flex-wrap gap-2">
-              <TechBadge>TypeScript</TechBadge>
-              <TechBadge>Node.js</TechBadge>
-              <TechBadge>Git Hooks</TechBadge>
-              <TechBadge>CLI Tools</TechBadge>
-            </div>
-          </section>
+        <Section>
+          <H>Technologies</H>
+          <div className="flex flex-wrap gap-2">
+            <TechBadge>TypeScript</TechBadge>
+            <TechBadge>Node.js</TechBadge>
+            <TechBadge>Git Hooks</TechBadge>
+            <TechBadge>CLI Tools</TechBadge>
+          </div>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Installation</h2>
-            <CodeBlock>{`npm install --save-dev commit-sentinel
+        <Section>
+          <H>Installation</H>
+          <CodeBlock>{`npm install --save-dev commit-sentinel
 npx commit-sentinel install`}</CodeBlock>
-            <p className="mt-2 text-sm">
-              The install command adds a commit-msg hook to .git/hooks. If a hook already exists,
-              commit-sentinel is chained to preserve existing functionality.
-            </p>
-          </section>
+          <p className="mt-2 text-sm">
+            The install command adds a commit-msg hook to .git/hooks. If a hook already exists,
+            commit-sentinel is chained to preserve existing functionality.
+          </p>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Configuration Example</h2>
-            <p className="mb-3">
-              Create <code className="px-1.5 py-0.5 bg-gray-800 rounded text-sm">.commit-sentinel.json</code> in
-              your project root or run <code className="px-1.5 py-0.5 bg-gray-800 rounded text-sm">npx commit-sentinel init</code>:
-            </p>
-            <CodeBlock>{`{
+        <Section>
+          <H>Configuration Example</H>
+          <p className="mb-3">
+            Create <code className="px-1.5 py-0.5 bg-gray-800 rounded text-sm">.commit-sentinel.json</code> in
+            your project root or run <code className="px-1.5 py-0.5 bg-gray-800 rounded text-sm">npx commit-sentinel init</code>:
+          </p>
+          <CodeBlock>{`{
   "commits": {
     "enabled": true,
     "enforce": true,
@@ -118,14 +118,14 @@ npx commit-sentinel install`}</CodeBlock>
     "rules": []
   }
 }`}</CodeBlock>
-          </section>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Usage Example</h2>
-            <p className="mb-3">
-              When a commit fails validation, Commit Sentinel provides clear error messages and suggestions:
-            </p>
-            <CodeBlock>{`❌  Commit blocked by commit-sentinel
+        <Section>
+          <H>Usage Example</H>
+          <p className="mb-3">
+            When a commit fails validation, Commit Sentinel provides clear error messages and suggestions:
+          </p>
+          <CodeBlock>{`❌  Commit blocked by commit-sentinel
 
 Commit: "added login screen"
 
@@ -134,37 +134,37 @@ Commit: "added login screen"
 
 💡 Suggestions:
    Try: "Add login screen"`}</CodeBlock>
-          </section>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Technical Highlights</h2>
-            <ul className="list-disc list-inside space-y-2">
-              <li>
-                <strong>Composable Hooks:</strong> Intelligently chains with existing git hooks instead of
-                overwriting them, preserving your workflow
-              </li>
-              <li>
-                <strong>Flexible Enforcement:</strong> Every check supports warn-only mode
-                (enforce: false) for gradual adoption in existing projects
-              </li>
-              <li>
-                <strong>CLI Commands:</strong> Includes validate, validate-branch, install, uninstall,
-                and init commands for manual testing and CI integration
-              </li>
-              <li>
-                <strong>Programmatic API:</strong> Export CommitSentinel class for custom integrations
-                and automated workflows
-              </li>
-              <li>
-                <strong>Smart Suggestions:</strong> Context-aware auto-corrections for common mistakes
-                (case conversion, verb conjugation, trailing periods)
-              </li>
-            </ul>
-          </section>
+        <Section>
+          <H>Technical Highlights</H>
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              <strong>Composable Hooks:</strong> Intelligently chains with existing git hooks instead of
+              overwriting them, preserving your workflow
+            </li>
+            <li>
+              <strong>Flexible Enforcement:</strong> Every check supports warn-only mode
+              (enforce: false) for gradual adoption in existing projects
+            </li>
+            <li>
+              <strong>CLI Commands:</strong> Includes validate, validate-branch, install, uninstall,
+              and init commands for manual testing and CI integration
+            </li>
+            <li>
+              <strong>Programmatic API:</strong> Export CommitSentinel class for custom integrations
+              and automated workflows
+            </li>
+            <li>
+              <strong>Smart Suggestions:</strong> Context-aware auto-corrections for common mistakes
+              (case conversion, verb conjugation, trailing periods)
+            </li>
+          </ul>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">CLI Commands</h2>
-            <CodeBlock>{`# Install the git hook
+        <Section>
+          <H>CLI Commands</H>
+          <CodeBlock>{`# Install the git hook
 npx commit-sentinel install
 
 # Remove the hook
@@ -178,14 +178,14 @@ npx commit-sentinel validate-branch "feature/1234-add-login"
 
 # Generate a default config file
 npx commit-sentinel init`}</CodeBlock>
-          </section>
+        </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Preset Examples</h2>
-            <div className="space-y-4">
-              <div>
-                <h3 className="text-base font-medium text-white mb-2">Strict Conventional Commits</h3>
-                <CodeBlock>{`{
+        <Section>
+          <H>Preset Examples</H>
+          <div className="space-y-4">
+            <Section>
+              <H>Strict Conventional Commits</H>
+              <CodeBlock>{`{
   "commits": {
     "requireType": true,
     "allowedTypes": ["feat", "fix", "docs", "chore", "refactor", "test"],
@@ -194,12 +194,12 @@ npx commit-sentinel init`}</CodeBlock>
     "maxLength": 72
   }
 }`}
-                </CodeBlock>
-              </div>
+              </CodeBlock>
+            </Section>
 
-              <div>
-                <h3 className="text-base font-medium text-white mb-2">Isolate Shared Code Changes</h3>
-                <CodeBlock>{`{
+            <Section>
+              <H>Isolate Shared Code Changes</H>
+              <CodeBlock>{`{
   "scope": {
     "enabled": true,
     "enforce": true,
@@ -212,12 +212,12 @@ npx commit-sentinel init`}</CodeBlock>
     ]
   }
 }`}
-                </CodeBlock>
-              </div>
+              </CodeBlock>
+            </Section>
 
-              <div>
-                <h3 className="text-base font-medium text-white mb-2">Relaxed Mode (Just Length and No WIP)</h3>
-                <CodeBlock>{`{
+            <Section>
+              <H>Relaxed Mode (Just Length and No WIP)</H>
+              <CodeBlock>{`{
   "commits": {
     "tense": null,
     "case": null,
@@ -229,17 +229,16 @@ npx commit-sentinel init`}</CodeBlock>
     "enabled": false
   }
 }`}</CodeBlock>
-              </div>
-            </div>
-          </section>
-
-          <div className="mt-12 pt-8 border-t border-gray-800 flex gap-4">
-            <Button href="/projects">← Back to Projects</Button>
-            <Button href="https://github.com/ben-rutledge-dev/commit-sentinel" external>
-              <Image src="/icons/github-logo.svg" alt="GitHub" width={20} height={20} className="inline-block mr-2" />
-              View on GitHub →
-            </Button>
+            </Section>
           </div>
+        </Section>
+
+        <div className="mt-12 pt-8 border-t border-gray-800 flex gap-4">
+          <Button href="/projects">← Back to Projects</Button>
+          <Button href="https://github.com/ben-rutledge-dev/commit-sentinel" external>
+            <Image src="/icons/github-logo.svg" alt="GitHub" width={20} height={20} className="inline-block mr-2" />
+            View on GitHub →
+          </Button>
         </div>
       </div>
     </PageWrapper>
