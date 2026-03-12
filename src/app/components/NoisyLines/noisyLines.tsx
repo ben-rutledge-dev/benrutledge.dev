@@ -31,7 +31,7 @@ function buildWelcomeMask(w: number, h: number, spacing: number): Set<string> {
   ctx.textBaseline = 'middle';
   let fontSize = Math.round(w * 0.18);
   ctx.font = `900 ${fontSize}px ${FONT}`;
-  const measured = ctx.measureText('Hello');
+  const measured = ctx.measureText('//');
   const targetWidth = w * 0.82;
   if(measured.width > 0) {
     fontSize = Math.round(fontSize * (targetWidth / measured.width));
@@ -42,7 +42,7 @@ function buildWelcomeMask(w: number, h: number, spacing: number): Set<string> {
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   ctx.fillStyle = '#fff';
-  ctx.fillText('Hello', w / 2, h / 2.05);
+  ctx.fillText('//', w / 2, h / 2.05);
 
   const { data } = ctx.getImageData(0, 0, w, h);
   const set = new Set<string>();
