@@ -3,7 +3,9 @@ import Image from 'next/image';
 import fs from 'node:fs';
 import path from 'node:path';
 // Components
+import { H } from '@/app/components/H';
 import { PageWrapper } from '@/app/components/PageWrapper';
+import { Section } from '@/app/components/Section';
 // Styles
 import styles from './projects.module.css';
 
@@ -55,8 +57,7 @@ async function getProjects(): Promise<Project[]> {
 export default async function Projects() {
   const projects = await getProjects();
   return (
-    <PageWrapper maxWidth="max-w-6xl">
-      <h1 className="text-4xl font-bold mb-8">Projects</h1>
+    <PageWrapper maxWidth="max-w-6xl" title="Projects">
       {/* Projects grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
@@ -83,12 +84,14 @@ export default async function Projects() {
               </div>
 
               {/* Project info */}
-              <h2 className="text-2xl font-semibold mb-2 group-hover:text-gray-300 transition-colors">
-                {project.title}
-              </h2>
-              <p className="text-gray-400 leading-relaxed">
-                {project.description}
-              </p>
+              <Section>
+                <H className="text-2xl font-semibold mb-2 group-hover:text-gray-300 transition-colors">
+                  {project.title}
+                </H>
+                <p className="text-gray-400 leading-relaxed">
+                  {project.description}
+                </p>
+              </Section>
             </div>
           </Link>
         ))}

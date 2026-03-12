@@ -1,10 +1,13 @@
-import { Button } from '@/app/components/Button';
-import { TechBadge } from '@/app/components/TechBadge';
-import { CodeBlock } from '@/app/components/CodeBlock';
-import { Gallery, GalleryImage } from '@/app/components/Gallery';
-import { PageWrapper } from '@/app/components/PageWrapper';
-import { WorkflowCard } from './components/WorkflowCard';
 import Image from 'next/image';
+// Components
+import { Button } from '@/app/components/Button';
+import { CodeBlock } from '@/app/components/CodeBlock';
+import { TechBadge } from '@/app/components/TechBadge';
+import { Gallery, GalleryImage } from '@/app/components/Gallery';
+import { H } from '@/app/components/H';
+import { PageWrapper } from '@/app/components/PageWrapper';
+import { Section } from '@/app/components/Section';
+import { WorkflowCard } from './components/WorkflowCard';
 
 const images: GalleryImage[] = [
   { src: '/notion-workflows/img/recipes.png', alt: 'Recipes Workflow', width: 800, height: 600 },
@@ -18,10 +21,10 @@ const images: GalleryImage[] = [
 
 export default function NotionWorkflowsPage() {
   return (
-    <PageWrapper maxWidth="max-w-full" padding="px-0">
+    <PageWrapper maxWidth="max-w-full" padding="p-0">
       {/* Header */}
-      <div className="max-w-4xl mx-auto px-8 pb-12">
-        <h1 className="text-4xl font-bold mb-4">Notion Workflows</h1>
+      <div className="max-w-3xl mx-auto px-8 pb-12">
+        <h1 className="text-3xl font-bold mb-4">Notion Workflows</h1>
         <p className="text-xl text-gray-300">
           Automated workflows for managing and enriching Notion databases with AI-powered content generation.
         </p>
@@ -31,20 +34,20 @@ export default function NotionWorkflowsPage() {
       <Gallery images={images} />
 
       {/* Project Details */}
-      <div className="max-w-4xl mx-auto px-8 pb-8">
+      <div className="max-w-3xl mx-auto px-8 pb-8">
         <div className="space-y-6 text-gray-300 leading-relaxed">
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Overview</h2>
+          <Section>
+            <H>Overview</H>
             <p>
               A collection of automated workflows that manage and enrich Notion databases —
               from meal planning and shopping lists to travel guides and pub crawl routes.
               The system runs nightly via GitHub Actions, using TypeScript, the Notion API,
               and Google Gemini AI to automate repetitive tasks and generate intelligent content.
             </p>
-          </section>
+          </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Key Workflows</h2>
+          <Section>
+            <H>Key Workflows</H>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <WorkflowCard title="Manage Shopping" description="End-to-end shopping list manager that extracts ingredients from meal plans and uses Gemini AI to categorize items automatically." />
               <WorkflowCard title="Populate Films & TV" description="Enriches a films/TV database with metadata from TMDB and OMDb APIs — posters, overview, runtime, genres, directors, and ratings." />
@@ -53,10 +56,10 @@ export default function NotionWorkflowsPage() {
               <WorkflowCard title="Manage Meal Planner" description="Maintains a rolling 28-day meal planner by archiving past days and creating future day pages automatically." />
               <WorkflowCard title="Events Calendar" description="Generates recurring calendar events from templates, creating events for the next 12 months based on weekday and week ordinal rules." />
             </div>
-          </section>
+          </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Technologies</h2>
+          <Section>
+            <H>Technologies</H>
             <div className="flex flex-wrap gap-2">
               <TechBadge>TypeScript</TechBadge>
               <TechBadge>Node.js</TechBadge>
@@ -66,10 +69,10 @@ export default function NotionWorkflowsPage() {
               <TechBadge>TMDB API</TechBadge>
               <TechBadge>OMDb API</TechBadge>
             </div>
-          </section>
+          </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Project Structure</h2>
+          <Section>
+            <H>Project Structure</H>
             <CodeBlock>{`utils/
   ai.ts          # Gemini AI client and batch annotation helper
   logger.ts      # Structured logger with log levels
@@ -86,10 +89,10 @@ workflows/
   populate-pubs/             # Optimal pub crawl routing
   populate-travel-database/  # AI travel destination annotations
   populate-walks-database/   # AI walking location annotations`}</CodeBlock>
-          </section>
+          </Section>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-white mb-3">Technical Highlights</h2>
+          <Section>
+            <H>Technical Highlights</H>
             <ul className="list-disc list-inside space-y-2">
               <li><strong>Automated CI/CD:</strong> All workflows run on nightly cron schedules via GitHub Actions with manual trigger support</li>
               <li><strong>AI Integration:</strong> Leverages Gemini 2.5 Flash with JSON response mode for structured content generation</li>
@@ -97,7 +100,7 @@ workflows/
               <li><strong>API Orchestration:</strong> Integrates multiple external APIs (Notion, TMDB, OMDb, Gemini) with robust error handling</li>
               <li><strong>Modular Architecture:</strong> Shared utilities for logging, parsing, and API clients enable rapid workflow development</li>
             </ul>
-          </section>
+          </Section>
 
           <div className="mt-12 pt-8 border-t border-gray-800 flex gap-4">
             <Button href="/projects">← Back to Projects</Button>
