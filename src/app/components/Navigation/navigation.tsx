@@ -84,7 +84,7 @@ export const Navigation: React.FC = () => {
         className={`md:hidden fixed top-0 left-0 h-full w-full bg-black/90 backdrop-blur-md z-40 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
       >
-        <div className="flex flex-col pt-24 px-8 space-y-6">
+        <div className="flex flex-col pt-8 px-8 space-y-6">
           {navLinks.map((link) => (
             link.external ? (
               <a
