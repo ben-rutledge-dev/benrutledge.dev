@@ -23,8 +23,6 @@ const TRACKS = [
   { name: 'vox5', key: 'v', initialMuted: true },
 ];
 
-const LOOP_END = 7.577;
-
 interface TrackData {
   source: AudioBufferSourceNode;
   gainNode: GainNode;
@@ -44,6 +42,7 @@ export default function CtrlLoopPlayer() {
   const buffersRef = useRef<Record<string, AudioBuffer>>({});
   const sourcesRef = useRef<Record<string, TrackData>>({});
   const filterRef = useRef<BiquadFilterNode | null>(null);
+  const loopEndRef = useRef<number>(0);
 
   // Keep refs in sync for use inside callbacks without stale closures
   const mutedRef = useRef(muted);
@@ -70,6 +69,10 @@ export default function CtrlLoopPlayer() {
         const ab = await res.arrayBuffer();
         buffersRef.current[name] = await ctx.decodeAudioData(ab);
       })
+    );
+
+    loopEndRef.current = Math.min(
+      ...TRACKS.map(({ name }) => buffersRef.current[name].duration)
     );
 
     setLoaded(true);
@@ -100,7 +103,7 @@ export default function CtrlLoopPlayer() {
       const gainNode = ctx.createGain();
       source.buffer = buffersRef.current[name];
       source.loop = true;
-      source.loopEnd = LOOP_END;
+      source.loopEnd = loopEndRef.current;
       source.connect(gainNode);
       gainNode.connect(ctx.destination);
       newSources[name] = { source, gainNode };
