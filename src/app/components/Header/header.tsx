@@ -13,8 +13,8 @@ export const Header: React.FC = () => {
       <HeaderHeightObserver />
       <div className="relative z-10 flex items-center justify-center h-full animate-slide-in-right">
         <div className="text-left px-6 max-w-2xl flex flex-col gap-2">
-          <Link href="/" className="inline-block cursor-pointer">
-            <h1 className="text-3xl md:text-5xl font-bold text-white">
+          <Link href="/" className="inline-block">
+            <h1 className="text-3xl md:text-5xl font-bold text-white cursor-pointer hover:text-gray-300 transition-colors">
               Ben Rutledge
             </h1>
           </Link>
