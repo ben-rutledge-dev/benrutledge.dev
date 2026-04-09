@@ -7,7 +7,6 @@ export const HeaderHeightObserver: React.FC = () => {
     const header = document.getElementById('site-header');
     if(!header) return;
     const observer = new ResizeObserver(() => {
-      const height = header.getBoundingClientRect().height;
       document.documentElement.style.setProperty(
         '--header-height',
         `${header.getBoundingClientRect().height}px`

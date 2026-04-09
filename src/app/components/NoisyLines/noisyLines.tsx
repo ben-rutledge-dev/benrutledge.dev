@@ -118,7 +118,8 @@ export const NoisyLines: React.FC = () => {
     window.addEventListener('resize', resize);
 
     const onMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
+      const rect = canvas.getBoundingClientRect();
+      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
     };
     const onMouseLeave = () => {
       mouseRef.current = { x: -9999, y: -9999 };
